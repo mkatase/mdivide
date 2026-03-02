@@ -1,0 +1,65 @@
+name: Release Linux Binary
+
+on:
+  push:
+    tags:
+      - 'v*' # v1.0.0 などのタグを打った時だけ動くなり
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    # ここから追加
+    permissions:
+      contents: write  # これが「Releaseを作ってファイルを置く」ための許可証なり！
+      repository-projects: write # これが About 編集に必要になる場合があるなり！
+    # ここまで追加
+    steps:
+      - uses: actions/checkout@v4
+
+      # Rustのツールチェーンをセットアップ（キャッシュを効かせるのが兵站のコツなり）
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      # リリースビルド実行（素のRustなら爆速なり！）
+      - name: Build
+        run: cargo build --release --locked
+
+      - name: Create Distribution Package
+        run: |
+          TAG_NAME=${{ github.ref_name }}
+          mkdir dist
+          cp target/release/mdivide dist/
+          cp -r data/ dist/
+          cp -r docs/ dist/
+          ./target/release/mdivide -l en -i docs/README.txt -o dist/README.md
+          ./target/release/mdivide -l en -i docs/CHANGELOG.txt -o dist/CHANGELOG.md
+          tar -cvzf mdivide_${TAG_NAME}_linux.tar.gz -C dist .
+
+      - name: Extract latest changelog
+        id: extract_changelog
+        run: |
+          # 1つ目の '##' から 2つ目の '##' の直前までを抜き出すなり
+          # ※ 最後の 'EOF' は GitHub Actions の「複数行出力」のお作法なり
+          {
+            echo 'body<<EOF'
+            sed -n '/^## \[[0-9].*\]/,/^## \[[0-9].*\]/p' ./dist/CHANGELOG.md | sed '$d'
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      #- name: Update Repository Metadata
+      #  env:
+      #    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #  run: |
+      #    # Cargo.tomlからversionやdescriptionを抜いて、Aboutに反映させるなり！
+      #    DESC=$(grep '^description' Cargo.toml | sed 's/description = "//;s/"//')
+      #    gh repo edit --description "$DESC" --add-topic "rust"
+
+      # バイナリをGitHub Releaseにアップロード
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: mdivide_${{ github.ref_name }}_linux.tar.gz
+          #files: target/release/mdivide # ここにバイナリ名を指定なり
+          body: ${{ steps.extract_changelog.outputs.body }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
