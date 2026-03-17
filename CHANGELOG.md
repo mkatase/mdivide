@@ -6,8 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-03-18
+### Fixed
+- version/about is activate
+
 ## [0.1.0] - 2026-03-03
 ### Added
 - New Release.
   A line-based multi-language divider for Markdown using @tag syntax by Rust.
-## Environment

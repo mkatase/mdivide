@@ -6,7 +6,10 @@ use std::collections::HashMap;
 use crate::error::AppError;
 
 #[derive(Parser)]
-#[clap(version, about, group(clap::ArgGroup::new("mode")
+#[clap(
+    version = env!("CARGO_PKG_VERSION"),
+    about = env!("CARGO_PKG_DESCRIPTION"),
+    group(clap::ArgGroup::new("mode")
         .required(true).args(&["input", "file"]), ))]
 pub struct Cli {
     #[clap(short, long, value_name = "Lang", help = "Input Lang")]

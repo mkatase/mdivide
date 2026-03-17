@@ -1,6 +1,6 @@
 [package]
 name = "mdivide"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 #
 authors = ["Michimoto Katase <mkatase@gmail.com>"]
@@ -10,4 +10,4 @@ repository = "https://github.com/mkatase/mdivide"
 readme = "README.md"
 
 [dependencies]
-clap = { version = "4.5.60", features = ["derive"] }
+clap = { version = "4.6.0", features = ["derive"] }

@@ -1,4 +1,5 @@
 @note
+- Edit Time: 2026-03-18 Add to 0.1.1
 - Edit Time: 2026-02-24 First Edit
 - mdivide -l en -i ./CHANGELOG.txt -o ./CHAGELOG.md
 @end
@@ -14,15 +15,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 @end
 #-------------------------------------------------------------------------------------
 @common
+## [0.1.1] - 2026-03-18
+### Fixed
+@end
+@en
+- version/about is activate
+
+@end
+@jp
+- version/aboutの有効化
+
+@end
+#-------------------------------------------------------------------------------------
+@common
 ## [0.1.0] - 2026-03-03
 ### Added
 @end
 @en
 - New Release.
   A line-based multi-language divider for Markdown using @tag syntax by Rust.
-## Environment
-@end
-@jp
 @end
 @jp
 - 新規リリース。マークダウン形式を拡張し、多言語化したファイルを、ターゲットとする
