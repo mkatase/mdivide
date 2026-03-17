@@ -4,7 +4,9 @@ on:
   push:
     tags:
       - 'v*' # v1.0.0 などのタグを打った時だけ動くなり
-
+env:
+  # 6月を待たずに Node 24 を強制し、今のうちに互換性を叩き出す
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 jobs:
   release:
     runs-on: ubuntu-latest
