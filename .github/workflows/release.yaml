@@ -37,7 +37,8 @@ jobs:
 
       # リリースビルド実行（素のRustなら爆速なり！）
       - name: Build
-        run: cargo build --release --locked
+        run: cargo build --release
+        #run: cargo build --release --locked
 
       - name: Create Distribution Package
         run: |
