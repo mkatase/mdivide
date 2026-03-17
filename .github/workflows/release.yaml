@@ -7,10 +7,11 @@ on:
 env:
   # 6月を待たずに Node 24 を強制し、今のうちに互換性を叩き出す
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    #runs-on: ubuntu-latest
     # ここから追加
     permissions:
       contents: write  # これが「Releaseを作ってファイルを置く」ための許可証なり！
