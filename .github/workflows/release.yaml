@@ -20,9 +20,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Rustのツールチェーンをセットアップ（キャッシュを効かせるのが兵站のコツなり）
-      - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
+      ## Rustのツールチェーンをセットアップ（キャッシュを効かせるのが兵站のコツなり）
+      #- name: Setup Rust
+      #  uses: dtolnay/rust-toolchain@stable
+      # JavaScriptベースのActionを使わず、直接rustupを叩いてNode.js依存を断つ
+      - name: Setup Rust (Node-free)
+        run: |
+          rustup update stable
+          rustup default stable
 
       # リリースビルド実行（素のRustなら爆速なり！）
       - name: Build
