@@ -18,8 +18,14 @@ jobs:
       repository-projects: write # これが About 編集に必要になる場合があるなり！
     # ここまで追加
     steps:
-      - uses: actions/checkout@v4
-
+      #- uses: actions/checkout@v4
+      # Node.js依存のアクションを使わず、直接 git clone 相当の動きをさせる
+      - name: Checkout code
+        run: |
+          git init
+          git remote add origin https://github.com/${{ github.repository }}.git
+          git fetch --depth=1 origin ${{ github.ref }}
+          git checkout FETCH_HEAD
       ## Rustのツールチェーンをセットアップ（キャッシュを効かせるのが兵站のコツなり）
       #- name: Setup Rust
       #  uses: dtolnay/rust-toolchain@stable
