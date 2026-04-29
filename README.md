@@ -11,7 +11,7 @@ A line-based multi-language divider for Markdown using @tag syntax by Rust.
 Mdivide ensures the integrity of multi-language documents by strictly enforcing "line-beginning @tag" rules. It is designed for developers who manage multiple translations within a single source file and require reliable extraction.
 
 ## Environment
-- cargo 1.93 on Fedora 43 (6.18.10-200)
+- cargo 1.95 on Fedora 44 (6.19.14-300)
 
 ## Build and Install
 

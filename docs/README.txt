@@ -1,5 +1,7 @@
 @note
-- Edit Date: 2026-02-24 First Edit
+- Edit Time: 2026-04-30 Modified tools version
+- Edit Time: 2026-03-16 Modified tools version
+- Edit Time: 2026-02-24 First Edit
 - mdivide -l en -i ./README.txt -o README-en.md
 @end
 @common
@@ -30,7 +32,7 @@ Mdivideは、「行頭の@タグ」という厳格なルールを設けること
 ## 環境
 @end
 @common
-- cargo 1.93 on Fedora 43 (6.18.10-200)
+- cargo 1.95 on Fedora 44 (6.19.14-300)
 
 @end
 #-----------------------------------------------------------------------
