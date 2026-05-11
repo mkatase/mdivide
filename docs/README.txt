@@ -1,4 +1,5 @@
 @note
+- Edit Time: 2026-05-12 Modified tools version
 - Edit Time: 2026-04-30 Modified tools version
 - Edit Time: 2026-03-16 Modified tools version
 - Edit Time: 2026-02-24 First Edit
@@ -32,7 +33,7 @@ Mdivideは、「行頭の@タグ」という厳格なルールを設けること
 ## 環境
 @end
 @common
-- cargo 1.95 on Fedora 44 (6.19.14-300)
+- cargo 1.95 on Fedora 44 (7.0.4-200)
 
 @end
 #-----------------------------------------------------------------------
