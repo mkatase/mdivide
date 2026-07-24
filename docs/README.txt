@@ -1,4 +1,5 @@
 @note
+- Edit Time: 2026-07-24 Updated kernel version
 - Edit Time: 2026-07-22 Updated kernel version
 - Edit Time: 2026-07-20 Updated kernel version
 - Edit Time: 2026-07-18 Updated tool version
@@ -52,7 +53,7 @@ Mdivideは、「行頭の@タグ」という厳格なルールを設けること
 ## 環境
 @end
 @common
-- cargo 1.97.1 on Fedora 44 (7.1.4-202)
+- cargo 1.97.1 on Fedora 44 (7.1.4-204)
 
 @end
 #-----------------------------------------------------------------------
